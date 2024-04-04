@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCC Registry Department - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #007bff;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .menu a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            margin-left: 220px; /* Adjust according to the sidebar width and margin */
+            padding: 20px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="menu">
+            <a href="#">View Student Records</a>
+            <a href="#">Register for Courses</a>
+            <a href="#">Manage Staff Records</a>
+            <a href="#">Generate Reports</a>
+            <a href="index.html" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <h1>Welcome to UCC Registry Department</h1>
+            <p>Hello, [Username]! You are now logged in to the UCC Registry Department's enterprise application.</p>
+            <!-- Content specific to the selected option will go here -->
+        </div>
+    </div>
+</body>
+</html>
