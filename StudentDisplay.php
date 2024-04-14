@@ -33,12 +33,14 @@
                     <th>First</th>
                     <th>Middle</th>
                     <th>Last</th>
-                    <th>Personal Email</th>
                     <th>School Email</th>
-                    <th>Contact Number</th>
-                    <th>Address</th>
+                    <th>Home Address</th>
+                    <th>Work</th>
+                    <th>Mobile</th>
                     <th>Next of Kin</th>
+                    <th>Nok Contact</th>
                     <th>Program</th>
+                    <th>GPA</th>
                 </tr>
             </thead>
             <tbody id="students-table-body">
@@ -69,12 +71,9 @@
                         echo "<td>" . $row['first_name'] . "</td>";
                         echo "<td>" . $row['middle_name'] . "</td>";
                         echo "<td>" . $row['last_name'] . "</td>";
-                        echo "<td>" . $row['personal_email'] . "</td>";
                         echo "<td>" . $row['student_email'] . "</td>";
                         echo "<td>" . $row['home_address'] . "</td>";
-                        echo "<td>" . $row['home_contact'] . "</td>";
                         echo "<td>" . $row['work_contact'] . "</td>";
-                        echo "<td>" . $row['home_contact'] . "</td>";
                         echo "<td>" . $row['mobile_contact'] . "</td>";
                         echo "<td>" . $row['next_of_kin'] . "</td>";
                         echo "<td>" . $row['nok_contact'] . "</td>";
