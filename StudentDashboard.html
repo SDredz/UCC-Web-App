@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Style/Dashboard.css">
+        <title>UCC Student Dashboard</title>
+    </head>
+    <body>
+        <header>
+            <img id="logo" src = "/Resources/logo.png">
+            <h1>University of Common Wealth Caribbean</h1>
+            <a id="Logout" class="btn" href="StudentLogin.html">Logout</a>
+        </header>
+        <nav>
+            <div class="sidebar">
+                <h2>Lecturer Add/Drop</h2>
+                <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
+                <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
+                <a href="StudentDisplay.html" class="btn" id="linkBtn">Current Students</a>
+                <a href="Course Schedule.html" class="btn" id="linkBtn">Course Schedule</a>
+                <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
+                <a onclick="history.back()" class="back" id="back">Go Back</a>
+            </div>
+        </nav>
+        <main>
+            <h2>Student Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="Courses.html">Available Courses</a></li>
+                    <!-- <li><a href="Lecturer.html">Current Lecturers</a></li> -->
+                    <li><a href="Course Schedule.html">Course Schedule</a></li>
+                    <li><a href="#">Course Enrollment</a></li>
+                </ul>
+            </nav>
+        </main>
+    </body>
+</html>

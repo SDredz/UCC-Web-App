@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Style/Dashboard.css">
+        <title>UCC Students</title>
+    </head>
+    <body>
+        <header>
+            <img id="logo" src = "/Resources/logo.png">
+            <h1>University of Common Wealth Caribbean</h1>
+            <a id="Logout" class="btn" href="AdminLogin.html">Logout</a>
+        </header>
+        <nav>
+            <div class="sidebar">
+                <h2>Lecturer Add/Drop</h2>
+                <a href="Courses.html" class="btn" id="linkBtn">Available Courses</a>
+                <a href="Lecturer.html" class="btn" id="linkBtn">Current Lecturers</a>
+                <a href="StudentDisplay.html" class="btn" id="linkBtn">Current Students</a>
+                <a href="Course Schedule.html" class="btn" id="linkBtn">Course Schedule</a>
+                <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
+                <a onclick="history.back()" class="back" id="back">Go Back</a>
+            </div>
+        </nav>
+        <main>
+            <h2>Current Students</h2>
+            <input type="text" id="search-input" placeholder="Search for a student...">
+            <table id="students-table">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>Next of Kin</th>
+                        <th>Program</th>
+                    </tr>
+                </thead>
+                <tbody id="students-table-body"></tbody>
+            </table>
+        </main>
+        <script src="/Javascript/StudentDisplay.js"></script>
+    </body>
+</html>

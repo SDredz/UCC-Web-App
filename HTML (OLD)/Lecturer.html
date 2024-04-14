@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/Style/Dashboard.css">
+        <title>Lecturers</title>
+    </head>
+    <body>
+        <header>
+            <img id="logo" src = "/Resources/logo.png">
+            <h1>University of Common Wealth Caribbean</h1>
+            <a id="Logout" class="btn" href="AdminLogin.html">Logout</a>
+        </header>
+        <nav>
+            <div class="sidebar">
+                <h2>Lecturer Add/Drop</h2>
+                <a href="Courses.html" class="btn" id="linkBtn">Available Courses</a>
+                <a href="Lecturer.html" class="btn" id="linkBtn">Current Lecturers</a>
+                <a href="StudentDisplay.html" class="btn" id="linkBtn">Current Students</a>
+                <a href="Course Schedule.html" class="btn" id="linkBtn">Course Schedule</a>
+                <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
+                <a onclick="history.back()" class="back" id="back">Go Back</a>
+            </div>
+        </nav>
+        <main>
+            <h2>Lecturers</h2>
+            <a id="add-lecturer-btn" class="btn">Add Lecturer</a>
+            <a id="delete-lecturer-btn" class="btn">Fire Lecturer</a>
+            <table id="lecturers-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </main>
+        <script src="/Javascript/Lecturer.js"></script>
+    </body>
+</html>
