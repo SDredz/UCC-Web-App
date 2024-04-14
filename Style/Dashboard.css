@@ -39,12 +39,20 @@ header {
 
 main {
     /* position: relative; */
-    max-width: 1000px;
-    margin: -350px auto;
+    max-width: 1150px;
+    margin: -19% auto;
+    margin-left: 20%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 1    0px;
+    text-align: center;
 }
 
 main h2 {
