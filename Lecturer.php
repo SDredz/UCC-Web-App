@@ -17,7 +17,7 @@
             <h2>Lecturer Add/Drop</h2>
             <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
             <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
-            <a href="StudentDisplay.html" class="btn" id="linkBtn">Current Students</a>
+            <a href="StudentDisplay.php" class="btn" id="linkBtn">Current Students</a>
             <a href="Course Schedule.html" class="btn" id="linkBtn">Course Schedule</a>
             <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
             <a onclick="history.back()" class="back" id="back">Go Back</a>
