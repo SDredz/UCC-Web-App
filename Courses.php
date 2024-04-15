@@ -7,6 +7,7 @@
     <title>UCC Courses</title>
 </head>
 <body>
+    <div class="blur-background"></div>
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
@@ -14,11 +15,10 @@
     </header>
     <nav>
         <div class="sidebar">
-            <h2>Lecturer Add/Drop</h2>
-            <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
+            <h2>Available Courses</h2>
             <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
             <a href="StudentDisplay.php" class="btn" id="linkBtn">Current Students</a>
-            <a href="CourseSchedule.php" class="btn" id="linkBtn">Course Schedule</a>
+            <a href="Course Schedule.php" class="btn" id="linkBtn">Course Schedule</a>
             <a href="CourseEnrollment.php" class="btn" id="linkBtn">Course Enrollment</a>
             <a href="javascript:history.back()" class="back" id="back">Go Back</a>
         </div>
@@ -38,18 +38,9 @@
             </thead>
             <tbody id="courses-table-body">
                 <?php
-                // Establish database connection
-                $servername = "localhost";
-                $username = "your_username";
-                $password = "your_password";
-                $database = "your_database_name";
-
-                $conn = mysqli_connect($servername, $username, $password, $database);
-
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
+                // Database configuration
+                include 'db_connection.php';
+                
                 // Fetch courses from database
                 $sql = "SELECT * FROM courses";
                 $result = mysqli_query($conn, $sql);
@@ -59,8 +50,8 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>" . $row['course_code'] . "</td>";
-                        echo "<td>" . $row['title'] . "</td>";
-                        echo "<td>" . $row['credits'] . "</td>";
+                        echo "<td>" . $row['course_title'] . "</td>";
+                        echo "<td>" . $row['course_credits'] . "</td>";
                         echo "<td>" . $row['degree_level'] . "</td>";
                         echo "<td>" . $row['prerequisites'] . "</td>";
                         echo "</tr>";

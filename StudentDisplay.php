@@ -7,20 +7,20 @@
     <title>UCC Students</title>
 </head>
 <body>
+    <div class="blur-background"></div>
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
-        <a id="Logout" class="btn" href="AdminLogin.html">Logout</a>
+        <a id="Logout" class="btn" href="AdminLogin.php">Logout</a>
     </header>
     <nav>
         <div class="sidebar">
             <h2>Lecturer Add/Drop</h2>
             <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
             <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
-            <a href="StudentDisplay.php" class="btn" id="linkBtn">Current Students</a>
-            <a href="Course Schedule.html" class="btn" id="linkBtn">Course Schedule</a>
+            <a href="Course Schedule.php" class="btn" id="linkBtn">Course Schedule</a>
             <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
-            <a onclick="history.back()" class="back" id="back">Go Back</a>
+            <a href="javascript:history.back()" class="back" id="back">Go Back</a>
         </div>
     </nav>
     <main>
@@ -30,15 +30,17 @@
             <thead>
                 <tr>
                     <th>Student ID</th>
-                    <th>First</th>
-                    <th>Middle</th>
-                    <th>Last</th>
+                    <th>Full Name</th>
+                    <!-- <th>Middle</th>
+                    <th>Last</th> -->
+                    <th>Personal Email</th>
                     <th>School Email</th>
                     <th>Home Address</th>
-                    <th>Work</th>
-                    <th>Mobile</th>
+                    <th>Home Contact</th>
+                    <th>Work Contact</th>
+                    <th>Mobile Contact</th>
                     <th>Next of Kin</th>
-                    <th>Nok Contact</th>
+                    <th>NOK Contact</th>
                     <th>Program</th>
                     <th>GPA</th>
                 </tr>
@@ -46,18 +48,7 @@
             <tbody id="students-table-body">
                 <?php
                 // Database configuration
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "UCC_database";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $database);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include 'db_connection.php';
 
                 // Fetch students from the database
                 $sql = "SELECT * FROM students";
@@ -68,11 +59,13 @@
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row['student_id'] . "</td>";
-                        echo "<td>" . $row['first_name'] . "</td>";
-                        echo "<td>" . $row['middle_name'] . "</td>";
-                        echo "<td>" . $row['last_name'] . "</td>";
+                        echo "<td>" . $row['first_name'] . " " .$row['middle_name'] .  " " .$row['last_name'] . "</td>";
+                        // echo "<td>" . $row['middle_name'] . "</td>";
+                        // echo "<td>" . $row['last_name'] . "</td>";
+                        echo "<td>" . $row['personal_email'] . "</td>";
                         echo "<td>" . $row['student_email'] . "</td>";
                         echo "<td>" . $row['home_address'] . "</td>";
+                        echo "<td>" . $row['home_contact'] . "</td>";
                         echo "<td>" . $row['work_contact'] . "</td>";
                         echo "<td>" . $row['mobile_contact'] . "</td>";
                         echo "<td>" . $row['next_of_kin'] . "</td>";

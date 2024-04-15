@@ -17,6 +17,7 @@
     </style>
 </head>
 <body>
+    <div class="blur-background"></div>
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
