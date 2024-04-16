@@ -244,6 +244,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 8px;
+    margin-bottom: 15px;
     background-color: #fff;
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
