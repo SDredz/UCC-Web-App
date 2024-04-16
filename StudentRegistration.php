@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/Style/Dashboard.css">
         <title>UCC Student Registration</title>
         <style>
+            /* adjusts main element on a page by page basis */
             main {
                 max-width: 1000px;
                 margin: 40px auto;
@@ -17,6 +18,7 @@
         </style>
     </head>
     <body>
+        <div class="blur-background"></div>
         <header>
             <img id="logo" src = "/Resources/logo.png">
             <h1>University of Common Wealth Caribbean</h1>
@@ -24,9 +26,7 @@
         <main>
             <h2>Student Registration</h2>
             <form id="registration-form" method="post">
-                <label for="identification-number">Identification Number:</label>
-                <input type="text" id="identification-number" name="identification_number" readonly>
-
+                
                 <label for="first-name">First Name:</label>
                 <input type="text" id="first-name" name="first_name" required>
 
@@ -36,41 +36,38 @@
                 <label for="last-name">Last Name:</label>
                 <input type="text" id="last-name" name="last_name" required>
 
-                <label for="email">Personal Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="personal-email">Personal Email:</label>
+                <input type="text" id="personal-email" name="personal_email" required>
 
-                <label for="mobile-number">Mobile Number:</label>
-                <input type="tel" id="mobile-number" name="mobile_number" required>
+                <label for="mobile-contact">Mobile Number:</label>
+                <input type="tel" id="mobile-contact" name="mobile_contact" required>
 
-                <label for="home-number">Home Number:</label>
-                <input type="tel" id="home-number" name="home_number" optional>
+                <label for="home-contact">Home Number:</label>
+                <input type="tel" id="home-contact" name="home_contact" optional>
 
-                <label for="work-number">Work Number:</label>
-                <input type="tel" id="work-number" name="work_number" optional>
+                <label for="work-contact">Work Number:</label>
+                <input type="tel" id="work-contact" name="work_contact" optional>
 
-                <label for="address">Home Address:</label>
-                <textarea id="address" name="address" required></textarea>
+                <label for="home-address">Home Address:</label>
+                <textarea type="text" id="home-address" name="home_address" required></textarea>
 
                 <label for="next-of-kin">Next of Kin:</label>
                 <input type="text" id="next-of-kin" name="next_of_kin" required>
 
-                <label for="kin-contact">Next of Kin Contact Number:</label>
-                <input type="tel" id="kin-contact" name="kin_contact" required>
+                <label for="kon-contact">Next of Kin Contact Number:</label>
+                <input type="tel" id="kin-contact" name="nok_contact" required>
 
                 <label for="program">Program of Study:</label>
                 <div id="program-options">
-                    <label for="program-business">Business</label>
-                    <input type="radio" id="program-business" name="program" value="Business" required>
-
-                    <label for="program-science">Science</label>
-                    <input type="radio" id="program-science" name="program" value="Science">
-
-                    <label for="program-information-technology">Information Technology</label>
-                    <input type="radio" id="program-information-technology" name="program" value="Information Technology">
+                    <select id="program" name="program">
+                        <option value="Business Administration">Business Administration</option>
+                        <option value="Science">Sciecnce</option>
+                        <option value="Information Technology">Information Technology</option>
+                    </select>
                 </div>
 
                 <label for="passwd">Password:</label>
-                <input type="text" id="passwd" name="passwd" required>
+                <input type="text" id="passwd" name="pass_word" required>
 
                 <button type="submit" class="btn">Submit</button>
             </form>
@@ -78,61 +75,69 @@
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Database configuration
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "ucc_database";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $database);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include 'db_connection.php';
 
                 // Generate identification number
-                $identificationNumber = '2024' . rand(10000, 99999);
+                $student_id = '2024' . rand(0001, 9999);
 
                 // Generate student email
-                function generateStudentEmail($firstName) {
-                    return strtolower($firstName) . "@ucc.com";
+                function generateStudentEmail($lastName, $firstname) {
+                    return strtolower($lastName) . "." . strtolower($firstname) . "@stu.ucc.edu.jm";
                 }
 
                 // Handle form submission
                 $studentData = array(
-                    "identification_number" => $identificationNumber,
+                    "student_id" => $student_id,
                     "first_name" => $_POST["first_name"],
                     "middle_name" => $_POST["middle_name"],
                     "last_name" => $_POST["last_name"],
-                    "email" => $_POST["email"],
-                    "mobile_number" => $_POST["mobile_number"],
-                    "home_number" => isset($_POST["home_number"]) ? $_POST["home_number"] : "",
-                    "work_number" => isset($_POST["work_number"]) ? $_POST["work_number"] : "",
-                    "address" => $_POST["address"],
+                    "personal_email" => $_POST["personal_email"],
+                    "mobile_contact" => $_POST["mobile_contact"],
+                    "home_contact" => $_POST["home_contact"],
+                    "work_contact" => $_POST["work_contact"],
+                    "home_address" => $_POST["home_address"],
                     "next_of_kin" => $_POST["next_of_kin"],
-                    "kin_contact" => $_POST["kin_contact"],
+                    "nok_contact" => $_POST["nok_contact"],
                     "program" => $_POST["program"],
-                    "student_email" => generateStudentEmail($_POST["first_name"])
+                    "student_email" => generateStudentEmail($_POST["last_name"], $_POST["first_name"]),
+                    "pass_word" => $_POST["pass_word"],
                 );
 
-                // Prepare and bind parameters
-                $stmt = $conn->prepare("INSERT INTO your_table_name (identification_number, first_name, middle_name, last_name, email, mobile_number, home_number, work_number, address, next_of_kin, kin_contact, program, student_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("sssssssssssss", $studentData["identification_number"], $studentData["first_name"], $studentData["middle_name"], $studentData["last_name"], $studentData["email"], $studentData["mobile_number"], $studentData["home_number"], $studentData["work_number"], $studentData["address"], $studentData["next_of_kin"], $studentData["kin_contact"], $studentData["program"], $studentData["student_email"]);
+                try{
+                    // Prepare and bind parameters
+                    $stmt = $conn->prepare("INSERT INTO students (student_id, first_name, middle_name, last_name, personal_email, mobile_contact, home_contact, work_contact, home_address, next_of_kin, nok_contact, program, student_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("sssssssssssss", $studentData["student_id"], $studentData["first_name"], $studentData["middle_name"], $studentData["last_name"], $studentData["personal_email"], $studentData["mobile_contact"], $studentData["home_contact"], $studentData["work_contact"], $studentData["home_address"], $studentData["next_of_kin"], $studentData["nok_contact"], $studentData["program"], $studentData["student_email"]);
 
-                // Execute query
-                $stmt->execute();
+                    // Get the password from the form
+                    $password = $_POST["pass_word"];
 
-                // Check for errors
-                if ($stmt->error) {
-                    echo "Error: " . $stmt->error;
-                } else {
-                    echo "Student registered successfully!";
+                    // Hash the password
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    $stmt = $conn->prepare("INSERT INTO login_stu_cred (student_id, pass_word) VALUES (?, ?)");
+                    $stmt->bind_param("ss", $studentData["student_id"], $studentData["pass_word"]);
+
+                    // Execute the secont INSERT statement
+                    $stmt->execute();
+
+                    // Close statement and connection
+                    $stmt->close();
+                    $conn->close();
+
+                    // Success check
+                    header("Location: Dashboard.php?message=" . urlencode("Student registered successfully!"));
+                    exit();
+                } catch (mysqli_sql_exception $e) {
+                    // Check if the error is due to duplicate entry
+                    if (strpos($e->getMessage(), "Duplicate entry") !== false) {
+                        // Duplicate entry error message
+                        header("Location: UCC_Register.php?message=" . urlencode("Duplicate entry! The Student ID already exists."));
+                        exit();
+                    } else {
+                        // Other errors
+                        echo "Error: " . $e->getMessage();
+                    }
                 }
-
-                // Close statement and connection
-                $stmt->close();
-                $conn->close();
+                
             }
             ?>
         </main>
