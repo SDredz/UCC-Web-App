@@ -108,6 +108,9 @@
                     $stmt = $conn->prepare("INSERT INTO students (student_id, first_name, middle_name, last_name, personal_email, mobile_contact, home_contact, work_contact, home_address, next_of_kin, nok_contact, program, student_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmt->bind_param("sssssssssssss", $studentData["student_id"], $studentData["first_name"], $studentData["middle_name"], $studentData["last_name"], $studentData["personal_email"], $studentData["mobile_contact"], $studentData["home_contact"], $studentData["work_contact"], $studentData["home_address"], $studentData["next_of_kin"], $studentData["nok_contact"], $studentData["program"], $studentData["student_email"]);
 
+                    // Execute the first INSERT statement
+                    $stmt->execute();
+                    
                     // Get the password from the form
                     $password = $_POST["pass_word"];
 

@@ -61,8 +61,7 @@
                 include 'db_connection.php';
 
                 // Generate identification number
-                $lecturer_ID = '20243528';
-                // $lecturer_ID = '2024' . rand(0000, 9999);
+                $lecturer_ID = '2024' . rand(0000, 9999);
 
                 // Generate student email
                 function generateStudentEmail($lastName, $firstname) {
