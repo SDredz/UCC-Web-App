@@ -11,7 +11,7 @@
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
-        <a id="Logout" class="btn" href="StudentLogin.php">Logout</a>
+        <a id="Logout" class="btn" href="UCC_Register.php">Logout</a>
     </header>
     <nav>
         <div class="sidebar">
@@ -25,7 +25,7 @@
     </nav>
     <main>
         <h2>Available Courses</h2>
-        <input type="text" id="search-input" placeholder="Search by course code or title...">
+        <!-- <input type="text" id="search-input" placeholder="Search by course code or title..."> -->
         <table id="courses-table">
             <thead>
                 <tr>

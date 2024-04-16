@@ -11,7 +11,7 @@
         <header>
             <img id="logo" src = "/Resources/logo.png">
             <h1>University of Common Wealth Caribbean</h1>
-            <a id="Logout" class="btn" href="StudentLogin.html">Logout</a>
+            <a id="Logout" class="btn" href="UCC_Register.php">Logout</a>
         </header>
         <nav>
             <div class="sidebar">
@@ -19,7 +19,7 @@
                 <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
                 <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
                 <a href="StudentDisplay.php" class="btn" id="linkBtn">Current Students</a>
-                <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
+                <a href="CourseEnrollment.php" class="btn" id="linkBtn">Course Enrollment</a>
                 <a onclick="history.back()" class="back" id="back">Go Back</a>
             </div>
         </nav>

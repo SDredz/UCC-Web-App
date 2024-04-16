@@ -11,7 +11,7 @@
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
-        <a id="Logout" class="btn" href="AdminLogin.html">Logout</a>
+        <a id="Logout" class="btn" href="UCC_Register.php">Logout</a>
     </header>
     <nav>
         <div class="sidebar">
@@ -25,8 +25,8 @@
     </nav>
     <main>
         <h2>Lecturers</h2>
-        <a id="add-lecturer-btn" class="btn">Add Lecturer</a>
-        <a id="delete-lecturer-btn" class="btn">Fire Lecturer</a>
+        <!-- <a id="add-lecturer-btn" class="btn">Add Lecturer</a>
+        <a id="delete-lecturer-btn" class="btn">Fire Lecturer</a> -->
         <table id="lecturers-table">
             <thead>
                 <tr>

@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Style/Dashboard.css">
     <title>UCC Students</title>
+    <style>
+        /* adjusts main element on a page by page basis */
+        main {
+                max-width: 1400px;
+                /* margin: 40px auto;
+                padding: 20px; */
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    </style>
 </head>
 <body>
     <div class="blur-background"></div>
     <header>
         <img id="logo" src="/Resources/logo.png">
         <h1>University of Common Wealth Caribbean</h1>
-        <a id="Logout" class="btn" href="AdminLogin.php">Logout</a>
+        <a id="Logout" class="btn" href="UCC_Register.php">Logout</a>
     </header>
     <nav>
         <div class="sidebar">
@@ -19,13 +30,13 @@
             <a href="Courses.php" class="btn" id="linkBtn">Available Courses</a>
             <a href="Lecturer.php" class="btn" id="linkBtn">Current Lecturers</a>
             <a href="Course Schedule.php" class="btn" id="linkBtn">Course Schedule</a>
-            <a href="course-enrollment.html" class="btn" id="linkBtn">Course Enrollment</a>
-            <a href="javascript:history.back()" class="back" id="back">Go Back</a>
+            <a href="CourseEnrollment.php" class="btn" id="linkBtn">Course Enrollment</a>
+            <a onclick="history.back()" class="back" id="back">Go Back</a>
         </div>
     </nav>
     <main>
         <h2>Current Students</h2>
-        <input type="text" id="search-input" placeholder="Search for a student...">
+        <!-- <input type="text" id="search-input" placeholder="Search for a student..."> -->
         <table id="students-table">
             <thead>
                 <tr>
