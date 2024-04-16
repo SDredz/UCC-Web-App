@@ -101,6 +101,13 @@ h1 {
     text-align: center;
 }
 
+p {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 1    0px;
+    text-align: center;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -229,6 +236,36 @@ nav a {
     border-radius: 4px;
     transition: background-color 0.3s ease;
     text-align: center;
+}
+
+select {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:hover,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select option {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
 }
 
 
