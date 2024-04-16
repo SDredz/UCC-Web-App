@@ -6,21 +6,54 @@
         <link rel="stylesheet" href="/Style/Dashboard.css">
         <title>UCC Dashboard</title>
         <style>
+             /* adjusts main element on a page by page basis */
             main {
-                max-width: 1000px;
+                max-width: 600px;
                 margin: 40px auto;
                 padding: 20px;
                 background-color: #fff;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
+            main h2 {
+                color: #333;
+                font-size: 30px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
         </style>
+                <script>
+        // Function to parse URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Function to display message as a popup
+        function displayMessage() {
+            var message = getParameterByName('message');
+            if (message) {
+                alert(message);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            displayMessage();
+        };
+        </script>
     </head>
     <body>
         <div class="blur-background"></div>
         <header>
             <img id="logo" src="/Resources/logo.png">
             <h1>University of Common Wealth Caribbean (UCC)</h1>
+            <a id="Logout" class="btn" href="LecturerRegistration.php">Lecturer Sign Up</a>
         </header>
         <main>
             <h2>Welcome to UCC!</h2>
@@ -29,10 +62,9 @@
                 <ul id="nav-links">
                     <?php
                     $links = [
-                        ['text' => 'Admin Login', 'href' => 'AdminLogin.php', 'action' => 'promptAdmin'],
                         ['text' => 'Student Login', 'href' => 'StudentLogin.php', 'action' => 'promptStudent'],
-                        ['text' => 'Available Courses', 'href' => 'Courses.php', 'action' => 'showAvailable'],
-                        ['text' => 'Register', 'href' => 'StudentRegistration.php', 'action' => 'showRegistrationForm'],
+                        ['text' => 'Lecturer Login', 'href' => 'AdminLogin.php', 'action' => 'promptAdmin'],
+                        ['text' => 'Register as a Student', 'href' => 'StudentRegistration.php', 'action' => 'showRegistrationForm'],
                     ];
 
                     foreach ($links as $link) {
@@ -42,34 +74,6 @@
                 </ul>
             </nav>
         </main>
-        <?php
-        // PHP function to handle admin prompt
-        function promptAdmin() {
-            if (confirm('Are you an admin?')) {
-                header("Location: AdminLogin.html");
-            } else {
-                // Placeholder
-            }
-        }
 
-        // PHP function to handle student prompt
-        function promptStudent() {
-            if (confirm('Are you a student?')) {
-                header("Location: StudentLogin.html");
-            } else {
-                // Placeholder
-            }
-        }
-
-        // PHP function to show available courses
-        function showAvailable() {
-            header("Location: Courses.html");
-        }
-
-        // PHP function to show registration form
-        function showRegistrationForm() {
-            header("Location: StudentRegistration.html");
-        }
-        ?>
     </body>
 </html>
