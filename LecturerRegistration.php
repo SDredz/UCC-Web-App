@@ -40,7 +40,7 @@
                 <div id="pdept-options">
                     <select id="lecturer-dept" name="lecturer_department">
                         <option value="Business Administration">Business Administration</option>
-                        <option value="Science">Sciecnce</option>
+                        <option value="Science">Science</option>
                         <option value="Information Technology">Information Technology</option>
                     </select>
                 </div>
