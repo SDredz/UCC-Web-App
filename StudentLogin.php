@@ -15,6 +15,31 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
+    <script>
+        // Function to parse URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Function to display message as a popup
+        function displayMessage() {
+            var message = getParameterByName('message');
+            if (message) {
+                alert(message);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            displayMessage();
+        };
+        </script>
 </head>
 <body>
     <div class="blur-background"></div>
@@ -25,8 +50,8 @@
     <main>
         <h2>Student Login</h2>
         <form id="Student-login-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <label for="Student-name">Student Name:</label>
-            <input type="text" id="Student-name" name="Student_name" required>
+            <label for="Student-id">Student ID:</label>
+            <input type="text" id="Student-id" name="student_id" required>
 
             <label for="Student-password">Password:</label>
             <input type="password" id="Student-password" name="Student_password" required>
@@ -38,21 +63,10 @@
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Database configuration
-        $servername = "localhost";
-        $username = "your_username";
-        $password = "your_password";
-        $database = "your_database_name";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        include 'db_connection.php';
 
         // Get username and password from the form
-        $username = $_POST["Student_name"];
+        $username = $_POST["student_id"];
         $password = $_POST["Student_password"];
 
         // Prepare SQL statement to select user
@@ -68,9 +82,11 @@
 
         // Check if user exists
         if ($result->num_rows > 0) {
-            echo "<p>Logged in!</p>";
+            header("Location: Dashboard.php?message=" . urlencode("Student logged in successfully!"));
+            exit();
         } else {
-            echo "<p>Invalid username or password</p>";
+            header("Location: StudentLogin.php?message=" . urlencode("Invalid Username Or Password"));
+            exit();
         }
 
         // Close statement and connection
