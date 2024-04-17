@@ -22,7 +22,7 @@
                 text-align: center;
             }
         </style>
-                <script>
+        <script>
         // Function to parse URL parameters
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
