@@ -24,7 +24,7 @@
                 text-align: center;
             }
         </style>
-        <script>
+       <script>
         // Function to parse URL parameters
         function getParameterByName(name, url) {
             if (!url) url = window.location.href;
@@ -39,8 +39,20 @@
         // Function to display message as a popup
         function displayMessage() {
             var message = getParameterByName('message');
-            if (message) {
-                alert(message);
+            var studentId = getParameterByName('student_id');
+            var lecturerId = getParameterByName('lecturer_ID');
+            if (message || studentId) {
+                var alertText = "";
+                if (message) {
+                    alertText += message + "\n";
+                }
+                if (studentId) {
+                    alertText += "Your student ID is: " + studentId;
+                }
+                if (lecturerId) {
+                    alertText += "Your lecturer ID is: " + lecturerId;
+                }
+                alert(alertText);
             }
         }
 
@@ -49,6 +61,7 @@
             displayMessage();
         };
         </script>
+
     </head>
     <body>
         <div class="blur-background"></div>

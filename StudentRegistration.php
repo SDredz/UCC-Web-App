@@ -61,7 +61,7 @@
                 <div id="program-options">
                     <select id="program" name="program">
                         <option value="Business Administration">Business Administration</option>
-                        <option value="Science">Sciecnce</option>
+                        <option value="Science">Science</option>
                         <option value="Information Technology">Information Technology</option>
                     </select>
                 </div>
@@ -126,8 +126,7 @@
                     $stmt->close();
                     $conn->close();
 
-                    // Success check
-                    header("Location: Dashboard.php?message=" . urlencode("Student registered successfully!"));
+                    header("Location: Dashboard.php?message=" . urlencode("Student registered successfully!") . "&student_id=" . urlencode($studentData["student_id"]));
                     exit();
                 } catch (mysqli_sql_exception $e) {
                     // Check if the error is due to duplicate entry

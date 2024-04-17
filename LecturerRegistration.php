@@ -103,7 +103,7 @@
                     $conn->close();
 
                     // Success check
-                    header("Location: Dashboard.php?message=" . urlencode("Lecturer registered successfully!"));
+                    header("Location: Dashboard.php?message=" . urlencode("Lecturer registered successfully!") . "&lecturer_ID=" . urlencode($lecturerData["lecturer_ID "]));
                     exit();
                 } catch (mysqli_sql_exception $e) {
                     // Check if the error is due to duplicate entry
