@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta and CSS links -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/Style/Dashboard.css">
         <title>UCC Lecturer Registration</title>
         <style>
-             /* adjusts main element on a page by page basis */
+             /* Inline CSS for main element */
             main {
                 max-width: 1000px;
                 margin: 40px auto;
@@ -20,13 +21,14 @@
     <body>
         <div class="blur-background"></div>
         <header>
-            <img id="logo" src = "/Resources/logo.png">
+            <!-- Header with logo and title -->
+            <img id="logo" src="/Resources/logo.png">
             <h1>University of Common Wealth Caribbean</h1>
         </header>
         <main>
             <h2>Lecturer Registration</h2>
             <form id="registration-form" method="post">
-                
+                <!-- Form fields for lecturer registration -->
                 <label for="lecturer-title">Title</label>
                 <input type="text" id="lecturer-title" name="lecturer_title" required>
 
@@ -34,7 +36,7 @@
                 <input type="text" id="lecturer-firstname" name="lecturer_firstname" required>
 
                 <label for="lecturer-lastname">Last Name:</label>
-                <input type="text" id="lecturer-firstname" name="lecturer_lastname" required>
+                <input type="text" id="lecturer-lastname" name="lecturer_lastname" required>
 
                 <label for="lecturer-deparment">Deparment</label>
                 <div id="pdept-options">
@@ -54,16 +56,29 @@
 
                 <button type="submit" class="btn">Submit</button>
             </form>
+            <div style="text-align: center;">
+                <button type="button" class="btn" onclick="toggleForm()" style="background-color: #007BFF; color: white; margin-top: 20px; border: none; outline: none;">Close Form</button>
+            </div>
 
+            <script>
+                function toggleForm() {
+                    var form = document.getElementById("registration-form");
+                    if (form.style.display === "none") {
+                        form.style.display = "block";
+                    } else {
+                        form.style.display = "none";
+                    }
+                }
+            </script>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Database configuration
+                // Include database connection
                 include 'db_connection.php';
 
                 // Generate identification number
                 $lecturer_ID = '2024' . rand(0000, 9999);
 
-                // Generate student email
+                // Function to generate student email
                 function generateStudentEmail($lastName, $firstname) {
                     return strtolower($lastName) . "." . strtolower($firstname) . "@stu.ucc.edu.jm";
                 }
@@ -79,9 +94,9 @@
                     "pass_word" => $_POST["pass_word"],
                 );
 
-                try{
-                    // Prepare and bind parameters
-                    $stmt = $conn->prepare("INSERT INTO lecturer_database (lecturer_ID, lecturer_title, lecturer_firstname, lecturer_lastname, lecturer_department, lecturer_position) VALUES (?, ?, ?, ?, ? ,?)");
+                try {
+                    // Prepare and bind parameters for lecturer_database
+                    $stmt = $conn->prepare("INSERT INTO lecturer_database (lecturer_ID, lecturer_title, lecturer_firstname, lecturer_lastname, lecturer_department, lecturer_position) VALUES (?, ?, ?, ?, ?, ?)");
                     $stmt->bind_param("ssssss", $lecturerData["lecturer_ID"], $lecturerData["lecturer_title"], $lecturerData["lecturer_firstname"], $lecturerData["lecturer_lastname"], $lecturerData["lecturer_department"], $lecturerData["lecturer_position"]);
 
                     // Execute the first INSERT statement
@@ -95,28 +110,26 @@
                     $stmt = $conn->prepare("INSERT INTO login_lec_cred (lecturer_ID, pass_word) VALUES (?, ?)");
                     $stmt->bind_param("ss", $lecturerData["lecturer_ID"], $lecturerData["pass_word"]);
 
-                    // Execute the secont INSERT statement
+                    // Execute the second INSERT statement
                     $stmt->execute();
 
                     // Close statement and connection
                     $stmt->close();
                     $conn->close();
 
-                    // Success check
-                    header("Location: Dashboard.php?message=" . urlencode("Lecturer registered successfully!") . "&lecturer_ID=" . urlencode($lecturerData["lecturer_ID "]));
+                    // Redirect on success
+                    header("Location: Dashboard.php?message=" . urlencode("Lecturer registered successfully!") . "&lecturer_ID=" . urlencode($lecturerData["lecturer_ID"]));
                     exit();
                 } catch (mysqli_sql_exception $e) {
-                    // Check if the error is due to duplicate entry
+                    // Handle duplicate entry error
                     if (strpos($e->getMessage(), "Duplicate entry") !== false) {
-                        // Duplicate entry error message
                         header("Location: UCC_Register.php?message=" . urlencode("Duplicate entry! The lecturer ID already exists."));
                         exit();
                     } else {
-                        // Other errors
+                        // Handle other errors
                         echo "Error: " . $e->getMessage();
                     }
                 }
-                
             }
             ?>
         </main>
